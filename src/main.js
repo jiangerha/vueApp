@@ -7,7 +7,8 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
-import { AlertPlugin, ToastPlugin, Actionsheet, XHeader, Tabbar, TabbarItem, Toast } from 'vux'
+import '../src/assets/scss/common.css'
+import { AlertPlugin, ToastPlugin, Actionsheet, XHeader, Tabbar, TabbarItem, Toast, Swiper } from 'vux'
 
 Vue.use(Vuex)
 Vue.use(XHeader, AlertPlugin, ToastPlugin, VueI18n)
@@ -16,6 +17,7 @@ Vue.component('XHeader', XHeader)
 Vue.component('tabbar', Tabbar)
 Vue.component('tabbar-item', TabbarItem)
 Vue.component('toast', Toast)
+Vue.component('swiper', Swiper)
 
 Vue.config.productionTip = false
 

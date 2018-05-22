@@ -57,7 +57,10 @@ const webpackConfig =  {// 原来的 module.exports 代码赋值给变量 webpac
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        include: [  
+          /src/
+        ],  
+        loaders: 'style-loader!css-loader!sass-loader',
       },
       {
         test: /\.js$/,

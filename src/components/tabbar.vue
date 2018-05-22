@@ -1,24 +1,29 @@
 <template>
   <div>
       <tabbar>
-        <tabbar-item selected @click.native="changeTab">
-          <img slot="icon" src="../assets/images/home-icon.png">
+        <tabbar-item :selected="selected === '首页'" @click.native="homePage" link="/">
+          <img slot="icon"  src="../assets/images/home-icon.png">
+          <img slot="icon-active"  src="../assets/images/home-icon-on.png">
           <span slot="label">首页</span>
         </tabbar-item>
-        <tabbar-item show-dot @click.native="changeTab">
+        <tabbar-item :selected="selected === '通讯录'" @click.native="mailList" link="/mailList">
           <img slot="icon" src="../assets/images/mailList-icon.png">
+          <img slot="icon-active"  src="../assets/images/mailList-icon-on.png">
           <span slot="label">通讯录</span>
         </tabbar-item>
-        <tabbar-item @click.native="changeTab">
-          <img slot="icon" src="../assets/images/DongDong-icon-on.png">
+        <tabbar-item :selected="selected === '咚咚'" @click="selected = '咚咚'" link="/DongDong">
+          <img slot="icon" src="../assets/images/DongDong-icon.png">
+          <img slot="icon-active"  src="../assets/images/DongDong-icon-on.png">
           <span slot="label">咚咚</span>
-        </tabbar-item @click.native="changeTab">
-        <tabbar-item badge="2" @click.native="changeTab">
+        </tabbar-item>
+        <tabbar-item :selected="selected === '充电'" @click="selected = '充电'" link="/charge">
           <img slot="icon" src="../assets/images/charge-icon.png">
+          <img slot="icon-active" src="../assets/images/charge-icon-on.png"/>
           <span slot="label">充电</span>
         </tabbar-item>
-        <tabbar-item badge="2" @click.native="$vux.toast.text('How are you~', 'top')">
+        <tabbar-item :selected="selected === '个人中心'" @click="selected = '个人中心'" link="/personal">
           <img slot="icon" src="../assets/images/personal-icon.png">
+          <img slot="icon-active"  src="../assets/images/personal-icon-on.png">
           <span slot="label">个人中心</span>
         </tabbar-item>
       </tabbar>
@@ -28,13 +33,19 @@
   export default {
     data () {
       return{
-
+        'selected':'首页'
       }
     },
     methods:{
-      changeTab(event){
-        console.log(1)
-      }
+      homePage(){
+        this.selected == "首页"
+        this.$emit('changeTitle',this.selected)
+      },
+      mailList(){
+        this.selected == "通讯录"
+        this.$emit('changeTitle',this.selected)
+        console.log(this.selected)
+      },
     }
   }
 </script>
