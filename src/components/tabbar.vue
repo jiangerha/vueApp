@@ -1,12 +1,12 @@
 <template>
   <div>
       <tabbar>
-        <tabbar-item :selected="selected === '首页'" @click.native="homePage" link="/">
+        <tabbar-item :selected="selected === '首页'" @click.native="selected = '首页'" link="/">
           <img slot="icon"  src="../assets/images/home-icon.png">
           <img slot="icon-active"  src="../assets/images/home-icon-on.png">
           <span slot="label">首页</span>
         </tabbar-item>
-        <tabbar-item :selected="selected === '通讯录'" @click.native="mailList" link="/mailList">
+        <tabbar-item :selected="selected === '通讯录'" @click.native="selected = '通讯录'" link="/mailList">
           <img slot="icon" src="../assets/images/mailList-icon.png">
           <img slot="icon-active"  src="../assets/images/mailList-icon-on.png">
           <span slot="label">通讯录</span>
@@ -37,15 +37,7 @@
       }
     },
     methods:{
-      homePage(){
-        this.selected == "首页"
-        this.$emit('changeTitle',this.selected)
-      },
-      mailList(){
-        this.selected == "通讯录"
-        this.$emit('changeTitle',this.selected)
-        console.log(this.selected)
-      },
+      
     }
   }
 </script>

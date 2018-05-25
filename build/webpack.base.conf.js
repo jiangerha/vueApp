@@ -12,14 +12,14 @@ function resolve (dir) {
 }
 
 const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
+  // test: /\.(js|vue)$/,
+  // loader: 'eslint-loader',
+  // enforce: 'pre',
+  // include: [resolve('src'), resolve('test')],
+  // options: {
+  //   formatter: require('eslint-friendly-formatter'),
+  //   emitWarning: !config.dev.showEslintErrorsInOverlay
+  // }
 })
 
 const webpackConfig =  {// 原来的 module.exports 代码赋值给变量 webpackConfig

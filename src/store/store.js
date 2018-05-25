@@ -1,13 +1,28 @@
-import Vue from 'vue'
+/**
+ * Created by superman on 17/2/16.
+ */
 import Vuex from 'vuex'
-Vue.use(Vuex)
+import Vue from 'vue'
+import * as types from './types'
 
+Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    count: 0
+    user: {},
+    token: null,
+    title: ''
   },
   mutations: {
-    increment: state => state.count++,
-    decrement: state => state.count--
+    [types.LOGIN]: (state, data) => {
+      localStorage.token = data
+      state.token = data
+    },
+    [types.LOGOUT]: (state) => {
+      localStorage.removeItem('token')
+      state.token = null
+    },
+    [types.TITLE]: (state, data) => {
+      state.title = data
+    }
   }
 })
