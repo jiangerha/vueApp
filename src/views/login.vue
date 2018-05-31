@@ -4,17 +4,18 @@
           <img src="../assets/images/login-bg.png"/>
           <img class="logo" src="../assets/images/logo-icon.png"/>
         </div>
-        <form class="login-form">
-          <div class="form-group">
-              <input type="text" placeholder="请输入您的账号" v-model="username"/>
-          </div>
-          <div class="form-group">
-              <input type="password" placeholder="请输入您的密码" v-model="pwd"/>
-          </div>
-          <div class="form-group">
-              <button class="login" type="button">登录</button>
-          </div>
-          <a class="forget-pwd" href="./">忘记密码？</a>
+        <form class="login-form" novalidate @submit.stop.prevent="login">
+          <md-input-container>
+            <label>用户名</label>
+            <md-input type="text" v-model="username"></md-input>
+          </md-input-container>
+          <md-input-container md-has-password>
+            <label>密码(Press Enter)</label>
+            <md-input type="password" v-model="pwd"></md-input>
+          </md-input-container>
+          <md-card-actions>
+            <md-button type="submit" class="md-raised md-primary" :disabled="sending">登录</md-button>
+          </md-card-actions>
         </form>
         <div class="divider">或</div>
         <div class="to-register"><a href="./">邮箱快捷注册</a></div>
@@ -23,7 +24,9 @@
         </a>
     </div>
 </template>
-<script>
+<script type="application/ecmascript">
+  import api from '../api/api'
+  import * as types from '../store/types'
 export default {
     name:"login",
     data () {
@@ -33,7 +36,37 @@ export default {
         }
     },
     methods: {
-
+      login(){
+        if(this.username && this.pwd){
+          alert(this.username)
+          alert(this.pwd)
+          // let params = {
+          //   "param":{
+          //     "serverUrl": "http://www.hounify.com:8818/api/",
+          //     "paramJson":
+          //       {
+          //         "username":this.username,
+          //         "password":this.pwd
+          //       }
+          //   }
+          // }
+          let params = {"username":this.username,"password":this.pwd}
+          this.axios.post('/gys/appLoginAndSave', params).then(response => {
+                var userInfo = {
+                  "username":this.username,
+                  "pwd":this.pwd
+                }
+                this.$store.commit(types.LOGIN, userInfo)
+                console.log(this.$store.state.userInfo)
+                let redirect = decodeURIComponent(this.$route.query.redirect || '/');
+                this.$router.push({
+                  path: redirect
+                })
+              }).catch(err => {
+                console.log(err)
+              })
+        }
+      }
     },
     computd: {
 
@@ -58,7 +91,7 @@ export default {
     }
     .login-form{
       padding: 0 20px;
-      .form-group{
+      .md-input-container{
         &:first-child{
           margin-top: 6vh;
           margin-bottom:4.6vh;
@@ -70,7 +103,6 @@ export default {
           width: 100%;
           height: 29px;
           border: none;
-          border-bottom:1px solid #ccc;
           font-size:16px;
           line-height:29px;
         }

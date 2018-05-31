@@ -16,22 +16,22 @@ const routes = [
   {
     path: '/',
     name: 'home',
+    meta: {
+      requireAuth: true
+    },
     component: home
   },
   {
     path: '/login',
     name: 'login',
-    // meta: {
-    //   requireAuth: true
-    // },
     component: login
   },
   {
     path: '/mailList',
     name: 'mailList',
-    // meta: {
-    //   requireAuth: true
-    // },
+    meta: {
+      requireAuth: true
+    },
     component: mailList
   },
   {
@@ -61,27 +61,30 @@ const routes = [
 ]
 
 // 页面刷新时，重新赋值token
-if (window.localStorage.getItem('token')) {
-  store.commit(types.LOGIN, window.localStorage.getItem('token'))
+if (window.localStorage.getItem('userInfo')) {
+  store.commit(types.LOGIN, window.localStorage.getItem('userInfo'))
+  console.log(window.localStorage.getItem('userInfo'))
 }
 
 const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(r => r.meta.requireAuth)) {
-//     if (store.state.token) {
-//       next()
-//     } else {
-//       next({
-//         path: '/login',
-//         query: {redirect: to.fullPath}
-//       })
-//     }
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(r => r.meta.requireAuth)) {
+    if (store.state.userInfo) {
+      console.log(store.state.userInfo)
+      next()
+    } else {
+      next({
+        path: '/login'
+        // ,
+        // query: {redirect: to.fullPath}
+      })
+    }
+  } else {
+    next()
+  }
+})
 
 export default router

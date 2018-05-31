@@ -8,12 +8,15 @@ import router from './router'
 import axios from './http'
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
+import VueMaterial from 'vue-material'
 
 import { AlertPlugin, ToastPlugin, Actionsheet, XHeader, Tabbar, TabbarItem, Toast, Swiper, Panel } from 'vux'
 // 公共样式
 import '../src/assets/scss/common.css'
+import '../node_modules/vue-material/dist/vue-material.css'
 
 Vue.use(Vuex)
+Vue.use(VueMaterial)
 Vue.use(XHeader, AlertPlugin, ToastPlugin, VueI18n)
 Vue.component('actionsheet', Actionsheet)
 Vue.component('XHeader', XHeader)

@@ -5,6 +5,7 @@
         <x-icon slot="right" type="navicon" size="35" style="fill:#fff;position:relative;top:-12px;left:-3px;"></x-icon>
       </x-header>
       <swiper loop auto :list="bannerList" :index="bannerIndex" @on-index-change="onIndexChange"></swiper>
+      <a @click="logout">logout</a>
       <div class="news-box" id="">
         <p class="news-box-title">公司新闻</p>
         <div class="list_box wrapper" id="wrapper" ref="wrapper">
@@ -28,7 +29,8 @@
   </div>
 </template>
 <script>
-  import BScroll from 'better-scroll'
+  // import BScroll from 'better-scroll'
+  import * as types from '../store/types'
   const urlList = [{
     url: 'javascript:',
     img: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg',
@@ -122,6 +124,12 @@
       setHeight(){
         var $wrapper = document.getElementById("wrapper");
         $wrapper.style.height = (this.fullHeight - 323 -10)+'px';
+      },
+      logout(){
+        this.$store.commit(types.LOGOUT)
+        this.$router.push({
+          path: '/login'
+        })
       }
     },
     watch:{
@@ -139,7 +147,7 @@
     }
   }
 </script>
-<style lang="scss">
+<style scoped lang="scss" rel="stylesheet/scss" type="text/css">
 .vux-slider{
   .vux-swiper-desc{
     text-align: left;

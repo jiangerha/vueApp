@@ -1,6 +1,6 @@
 <template>
     <div>
-      personal
+      
     </div>
   </template>
   <script>

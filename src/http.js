@@ -4,19 +4,22 @@
  */
 
 import axios from 'axios'
-import store from './store/store'
-import * as types from './store/types'
-import router from './router'
+import qs from 'qs'
+// import store from './store/store'
+// import * as types from './store/types'
+// import router from './router'
 
 // axios 配置
 axios.defaults.timeout = 5000
-axios.defaults.baseURL = 'https://api.github.com'
+// axios.defaults.baseURL = 'http://116.62.45.61:8888/services/'
+axios.defaults.baseURL = 'http://192.168.0.24/rest/s1/'
 
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
-    if (store.state.token) {
-      config.headers.Authorization = `token ${store.state.token}`
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded;utf-8'
+    if (config.method === 'post') {
+      config.data = qs.stringify(config.data)
     }
     return config
   },
@@ -25,24 +28,15 @@ axios.interceptors.request.use(
   })
 
 // http response 拦截器
-axios.interceptors.response.use(
-  response => {
-    return response
-  },
-  error => {
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          // 401 清除token信息并跳转到登录页面
-          store.commit(types.LOGOUT)
-          router.replace({
-            path: 'login',
-            query: {redirect: router.currentRoute.fullPath}
-          })
-      }
-    }
-    // console.log(JSON.stringify(error));//console : Error: Request failed with status code 402
-    return Promise.reject(error.response.data)
-  })
+axios.interceptors.response.use((res) => {
+  if (!res) {
+    console.log(res)
+    return Promise.reject(res)
+  }
+  return res
+}, (error) => {
+  console.log('错误')
+  return Promise.reject(error)
+})
 
 export default axios

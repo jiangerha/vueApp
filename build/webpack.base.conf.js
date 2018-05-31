@@ -4,6 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
+var webpack = require("webpack")
+
 
 
 
@@ -104,7 +106,14 @@ const webpackConfig =  {// 原来的 module.exports 代码赋值给变量 webpac
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.ProvidePlugin({
+    jQuery: "jquery",
+      $: "jquery"
+    })
+  ]
 }
 
 module.exports = vuxLoader.merge(webpackConfig, {
