@@ -1,5 +1,6 @@
 
 export default {
   login: '/loginApi/login',
-  register: '/usersApi/appRegister'
+  register: '/usersApi/appRegister',
+  hotfilm: '/movie/in_theaters'
 }

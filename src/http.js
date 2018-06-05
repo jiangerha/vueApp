@@ -12,7 +12,8 @@ import qs from 'qs'
 // axios 配置
 axios.defaults.timeout = 5000
 // axios.defaults.baseURL = 'http://116.62.45.61:8888/services/'
-axios.defaults.baseURL = 'http://192.168.0.24/rest/s1/'
+// axios.defaults.baseURL = 'http://192.168.0.24/rest/s1/'
+// axios.defaults.baseURL = 'http://api.douban.com/v2/'
 
 // http request 拦截器
 axios.interceptors.request.use(
@@ -29,6 +30,7 @@ axios.interceptors.request.use(
 
 // http response 拦截器
 axios.interceptors.response.use((res) => {
+  // if (res.headers.code !== 200) {
   if (!res) {
     console.log(res)
     return Promise.reject(res)

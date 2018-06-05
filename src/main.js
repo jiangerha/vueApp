@@ -7,29 +7,21 @@ import App from './App'
 import router from './router'
 import axios from './http'
 import Vuex from 'vuex'
-import VueI18n from 'vue-i18n'
 import VueMaterial from 'vue-material'
-
-import { AlertPlugin, ToastPlugin, Actionsheet, XHeader, Tabbar, TabbarItem, Toast, Swiper, Panel } from 'vux'
+import scroll from './components/scroll'
 // 公共样式
-import '../src/assets/scss/common.css'
+
 import '../node_modules/vue-material/dist/vue-material.css'
+import '../node_modules/vue-material/dist/theme/black-green-dark.css'
+import '../src/assets/scss/reset.css'
 
 Vue.use(Vuex)
 Vue.use(VueMaterial)
-Vue.use(XHeader, AlertPlugin, ToastPlugin, VueI18n)
-Vue.component('actionsheet', Actionsheet)
-Vue.component('XHeader', XHeader)
-Vue.component('tabbar', Tabbar)
-Vue.component('tabbar-item', TabbarItem)
-Vue.component('toast', Toast)
-Vue.component('swiper', Swiper)
-Vue.component('panel', Panel)
-
+Vue.component('scroll', scroll)
 Vue.config.productionTip = false
 
 // 将axios挂载到prototype上，在组件中可以直接使用this.axios访问
-Vue.prototype.axios = axios;
+Vue.prototype.axios = axios
 
 /* eslint-disable no-new */
 new Vue({
