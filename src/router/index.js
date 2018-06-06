@@ -26,7 +26,7 @@ const routes = [
     path: '/books',
     name: 'books',
     component: books,
-    redirect: '/books/movie',
+    // redirect: '/books/movie',
     children: [
       {
         path: '/books/movie',

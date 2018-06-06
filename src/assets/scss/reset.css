@@ -38,3 +38,14 @@ ul li {
 .md-icon.md-theme-default.md-icon-font {
   color: #d8d8d8 !important;
 }
+
+.rate_box .md-icon {
+  width: 12px;
+  min-width: 12px;
+  height: 12px;
+  font-size: 14px !important;
+}
+
+.rate_box .md-icon.md-theme-default.md-icon-font.yellowBg {
+  color: #FFB712 !important;
+}

@@ -6,7 +6,7 @@
           <div class="phone-viewport">
               <md-bottom-bar md-sync-route>
                   <md-bottom-bar-item to="/home" md-label="首页" md-icon="home"></md-bottom-bar-item>
-                <md-bottom-bar-item to="/books" md-label="书影音" md-icon="add"></md-bottom-bar-item>
+                <md-bottom-bar-item to="/books/movie" md-label="书影音" md-icon="add"></md-bottom-bar-item>
                 <md-bottom-bar-item to="/broadcast" md-label="广播" md-icon="favorite"></md-bottom-bar-item>
                 <md-bottom-bar-item to="/user" md-label="我的" md-icon="favorite"></md-bottom-bar-item>
               </md-bottom-bar>

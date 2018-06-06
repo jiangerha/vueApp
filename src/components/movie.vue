@@ -2,15 +2,16 @@
   <div class="movie-part">
     <div class="movie-title">
       <span class="left-text">影院热映</span>
-      <span class="right-more">全部{{num}} &gt;</span>
+      <span class="right-more">更多</span>
     </div>
     <scroll class="wrapper movie-list-container"
     :data="hotFilmList">
       <ul class="content movie-list" ref="movieList">
       <li v-for="item in hotFilmList" ref="movieItem">
           <img :src="item.images.small" @error="hideItem"/>
-          <p>{{item.title}}</p>
-          <rating></rating>
+          <p class="movie_title">{{item.title}}</p>
+          <rating v-if="item.rating.average > 0" :score="item.rating.average"></rating>
+          <p v-else>暂无评分</p>
       </li>
       </ul>
       <div class="loading-wrapper"></div>
@@ -65,7 +66,7 @@
     }
     .right-more{
       font-size: 14px;
-      color: #ccc;
+      color: #42bd56;
       float: right;
     }
   }
@@ -79,6 +80,9 @@
         margin: 0 5px;
         p{
           color:#333;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }
