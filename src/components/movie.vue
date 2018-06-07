@@ -7,12 +7,14 @@
     <scroll class="wrapper movie-list-container"
     :data="hotFilmList">
       <ul class="content movie-list" ref="movieList">
-      <li v-for="item in hotFilmList" ref="movieItem">
-          <img :src="item.images.small" @error="hideItem"/>
-          <p class="movie_title">{{item.title}}</p>
-          <rating v-if="item.rating.average > 0" :score="item.rating.average"></rating>
-          <p v-else>暂无评分</p>
-      </li>
+        <li tag="li" v-for="item in hotFilmList">
+          <router-link tag="a" :to="{path:'/moviedetail',query:{id:item.id}}">
+              <img :src="item.images.small" @error="hideItem"/>
+              <p class="movie_title">{{item.title}}</p>
+              <rating v-if="item.rating.average > 0" :score="item.rating.average"></rating>
+              <p v-else>暂无评分</p>
+          </router-link>
+        </li>
       </ul>
       <div class="loading-wrapper"></div>
     </scroll>
@@ -33,7 +35,7 @@
     },
     methods:{
       _renderList(){
-        this.axios.get('/api' + api.hotfilm).then(response => {
+        this.axios.get(api.hotfilm).then(response => {
           this.hotFilmList = response.data.subjects;
           this.num = response.data.total;
         }).catch(err =>{
@@ -42,6 +44,10 @@
       },
       hideItem(e){
         $(e.target).parents("li").remove()
+      },
+      toDetails(e){
+        // alert($(e.target).find(".item-id"))
+        console.log($(e.target))
       }
     },
     components:{
@@ -71,9 +77,10 @@
     }
   }
   .movie-list-container{
-    height: 180px;
+    height: 202px;
     .movie-list{
       height: 100%;
+      overflow: hidden;
       li{
         float: left;
         width:115px;

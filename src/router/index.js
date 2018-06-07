@@ -9,6 +9,7 @@ import books from '@/views/books'
 import broadcast from '@/views/broadcast'
 import user from '@/views/user'
 import movie from '@/components/movie'
+import moviedetail from '@/components/movieDetails'
 
 Vue.use(VueRouter)
 
@@ -20,35 +21,43 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: home
-  },
-  {
-    path: '/books',
-    name: 'books',
-    component: books,
-    // redirect: '/books/movie',
-    children: [
+    component: home,
+    children:[
       {
-        path: '/books/movie',
-        name: 'movie',
-        component: movie
+        path: '/books',
+        name: 'books',
+        component: books,
+        // redirect: '/books/movie',
+        children: [
+          {
+            path: '/books/movie',
+            name: 'movie',
+            component: movie
+          }
+        ]
+      },
+      {
+        path: '/broadcast',
+        name: 'broadcast',
+        component: broadcast
+      },
+      {
+        path: '/user',
+        name: 'user',
+        component: user
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: login
       }
     ]
   },
+  
   {
-    path: '/broadcast',
-    name: 'broadcast',
-    component: broadcast
-  },
-  {
-    path: '/user',
-    name: 'user',
-    component: user
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: login
+    path: '/moviedetail',
+    name: 'moviedetail',
+    component: moviedetail
   }
 ]
 

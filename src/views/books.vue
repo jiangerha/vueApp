@@ -35,8 +35,7 @@
          },
          methods:{
            _renderList(){
-             console.log("ok")
-             this.axios.get('/api' + api.hotfilm).then(response => {
+             this.axios.get(api.hotfilm).then(response => {
                this.hotFilmList = response.data.subjects;
              }).catch(err =>{
                console.log(err)
@@ -57,6 +56,7 @@
           p{
             line-height: 40px;
             font-size: 18px;
+            text-align: center;
           }
           .md-icon{
             color: #00b600;

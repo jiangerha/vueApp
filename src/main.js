@@ -12,7 +12,7 @@ import scroll from './components/scroll'
 // 公共样式
 
 import '../node_modules/vue-material/dist/vue-material.css'
-import '../node_modules/vue-material/dist/theme/black-green-dark.css'
+// import '../node_modules/vue-material/dist/theme/black-green-dark.css'
 import '../src/assets/scss/reset.css'
 
 Vue.use(Vuex)
