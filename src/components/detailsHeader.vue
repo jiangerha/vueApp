@@ -1,7 +1,9 @@
 <template>
   <div class="header-section" ref="headerSection">
       <div class="details-header">
-          <md-icon class="back-icon">navigate_before</md-icon>
+          <router-link tag="a" :to="backUrl">
+              <md-icon class="back-icon">navigate_before</md-icon>
+          </router-link>
           <div v-if="type == 0">
               <md-icon>video_library</md-icon>
               <span>电影</span>
@@ -34,7 +36,8 @@
       return{
         type:0,
         title:'',
-        imgUrl:''
+        imgUrl:'',
+        backUrl:''
       }
     },
     props:{
@@ -46,7 +49,8 @@
     mounted(){
       this.type = this.data.type,
       this.title = this.data.title,
-      this.imgUrl = this.data.img
+      this.imgUrl = this.data.img,
+      this.backUrl = this.data.backUrl
     }
   }
 </script>

@@ -22,7 +22,7 @@ const routes = [
     path: '/home',
     name: 'home',
     component: home,
-    children:[
+    children: [
       {
         path: '/books',
         name: 'books',

@@ -1,6 +1,6 @@
 <template>
   <div class="movie-details">
-    <details-header :data="{type:0,title:detailData.title,img:detailData.images.small}"></details-header>
+    <details-header :data="{type:0,title:detailData.title,img:detailData.images.small,backUrl:backUrl}"></details-header>
     <div class="base-info">
         <p class="info-title">{{detailData.title}}</p>
         <div class="info-text">
@@ -31,7 +31,8 @@
   export default {
     data(){
       return{
-        detailData:{}
+        detailData:{},
+        backUrl:this.$route.query.backUrl
       }
     },
     mounted(){
