@@ -4,7 +4,10 @@
         <div class="title">
             <p>书影音</p>
             <div class="books-icon">
-                <md-icon>search</md-icon>
+              <router-link tag="span" to="/search">
+                  <md-icon>search</md-icon>
+              </router-link>
+                    
                 <md-icon>account_circle</md-icon>
             </div>
         </div>

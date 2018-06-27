@@ -16,6 +16,7 @@
               <p class="movie_title">{{item.title}}</p>
               <div v-if="type!=1">
                 <rating v-if="item.rating.average > 0" :score="item.rating.average"></rating>
+                <span class="score_span" v-if="item.rating.average > 0">{{item.rating.average}}</span>
                 <p v-else>暂无评分</p>
               </div>
               <span class="collect-count" v-else>{{item.collect_count}}想看</span>
@@ -122,6 +123,14 @@
         .collect-count{
           font-size: 12px;
           color: #666;
+        }
+        .rate_box{
+          display: inline-block;
+        }
+        .score_span{
+          color: #999;
+          font-size: 12px;
+          margin-left: 5px;
         }
       }
     }

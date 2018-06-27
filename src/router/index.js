@@ -8,6 +8,7 @@ import login from '@/views/login'
 import books from '@/views/books'
 import broadcast from '@/views/broadcast'
 import user from '@/views/user'
+import search from '@/views/search'
 import movie from '@/components/movie'
 import moviedetail from '@/components/movieDetails'
 
@@ -53,11 +54,15 @@ const routes = [
       }
     ]
   },
-  
   {
     path: '/moviedetail',
     name: 'moviedetail',
     component: moviedetail
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: search
   }
 ]
 

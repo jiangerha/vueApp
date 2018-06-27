@@ -17,6 +17,15 @@ ul{
     list-style: none;
   }
 }
+a{
+  text-decoration: none;
+}
+input,button{
+  outline: none;
+}
+input{
+  text-indent: .5em;
+}
 .md-bottom-bar{
   .md-active{
     .md-icon{
@@ -39,7 +48,8 @@ ul{
 .md-icon.md-theme-default.md-icon-font{
   color: #d8d8d8!important;
 }
-.rate_box{
+.rate-box{
+  text-align: center;
   .md-icon{
     width: 12px;
     min-width: 12px;

@@ -19,6 +19,18 @@ ul li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+input, button {
+  outline: none;
+}
+
+input {
+  text-indent: .5em;
+}
+
 .md-bottom-bar .md-active .md-icon {
   color: #00b600 !important;
 }
@@ -39,13 +51,17 @@ ul li {
   color: #d8d8d8 !important;
 }
 
-.rate_box .md-icon {
+.rate-box {
+  text-align: center;
+}
+
+.rate-box .md-icon {
   width: 12px;
   min-width: 12px;
   height: 12px;
   font-size: 14px !important;
 }
 
-.rate_box .md-icon.md-theme-default.md-icon-font.yellowBg {
+.rate-box .md-icon.md-theme-default.md-icon-font.yellowBg {
   color: #FFB712 !important;
 }

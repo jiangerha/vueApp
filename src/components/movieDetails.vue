@@ -13,11 +13,11 @@
           </p>
         </div>
         <div class="info-rating">
-          <p>豆瓣评分</p>
+          <p class="rate-title">豆瓣评分</p>
           <div v-if="detailData.rating.average > 0">
-            <p>{{detailData.rating.average}}</p>
+            <p class="score-num">{{detailData.rating.average}}</p>
             <rating :score="detailData.rating.average"></rating>
-            <span class="rating-count" v-if="detailData.ratings_count > 0">{{detailData.ratings_count}}人</span>
+            <p class="rating-count" v-if="detailData.ratings_count > 0">{{detailData.ratings_count}}人</p>
           </div>
           <p v-else>暂无评分</p>
         </div>
@@ -41,6 +41,7 @@
     methods:{
       _getInfo(){
         this.axios.get(api.moviedetail + this.$route.query.id).then(response => {
+          console.log(api.moviedetail + this.$route.query.id)
           this.detailData = response.data;
           console.log(this.detailData)
         }).catch(err => {
@@ -69,29 +70,33 @@
       float: left;
     }
     .info-text{
-      width: 75%;
+      width: 70%;
       padding: 0 10% 0 5%;
-      .rate_box{
+      .rate-box{
         display: inline-block;
       }
-      .rating-count{
-        font-size: 12px;
-        color: #888;
-      }
       .info-details{
-        span{
-          color: #666!important;
-        }
+        color: #999!important;
       }
     }
     .info-rating{
-      width: 20%;
+      width: 25%;
       height: 80px;
       box-shadow: 1px 1px 1px 2px #ececec;
-      .rate_box{
-        span{
-          display: none!important;
-        }
+      .rate-title{
+        font-size: 12px;
+        color:#999;
+        text-align:center;
+      }
+      .score-num{
+        text-align: center;
+        font-size: 18px;
+        line-height: 18px;
+      }
+      .rating-count{
+        text-align: center;
+        font-size: 12px;
+        color: #888;
       }
     }
   }

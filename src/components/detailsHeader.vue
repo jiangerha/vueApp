@@ -1,9 +1,7 @@
 <template>
   <div class="header-section" ref="headerSection">
       <div class="details-header">
-          <router-link tag="a" :to="backUrl">
-              <md-icon class="back-icon">navigate_before</md-icon>
-          </router-link>
+          <span @click="back"><md-icon class="back-icon">navigate_before</md-icon></span>
           <div v-if="type == 0">
               <md-icon>video_library</md-icon>
               <span>电影</span>
@@ -49,8 +47,14 @@
     mounted(){
       this.type = this.data.type,
       this.title = this.data.title,
-      this.imgUrl = this.data.img,
-      this.backUrl = this.data.backUrl
+      this.imgUrl = this.data.img
+    },
+    methods:{
+      back(){
+        // this.$route.go(-1);
+        history.go(-1)
+        console.log(111)
+      }
     }
   }
 </script>
